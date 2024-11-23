@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿QUÉ TANTO ME CONOCES?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #8a2be2, #4169e1);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            margin: 0.5rem;
+            font-size: 1rem;
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn-rules {
+            background-color: #008CBA;
+        }
+        .btn-rules:hover {
+            background-color: #007B9A;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            color: #333;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿QUÉ TANTO ME CONOCES?</h1>
+        <p>Pon a prueba cuánto sabes sobre Hugo.</p>
+        <button class="btn" onclick="iniciarJuego()">Iniciar Juego</button>
+        <button class="btn btn-rules" onclick="mostrarReglas()">Ver Reglas</button>
+    </div>
+
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('formModal')">&times;</span>
+            <h2>Formulario del Juego</h2>
+            <div class="iframe-container">
+                <iframe src="https://forms.gle/eeihqD3iL6keBnse6" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="reglasModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('reglasModal')">&times;</span>
+            <h2>Reglas del Juego</h2>
+            <ol>
+                <li>Cada jugador responde preguntas sobre Hugo.</li>
+                <li>Intenta adivinar las respuestas correctas.</li>
+                <li>Gana puntos por cada respuesta correcta.</li>
+                <li>El participante con más puntos al final gana.</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function iniciarJuego() {
+            alert("¡El juego está comenzando!");
+            document.getElementById("formModal").style.display = "block";
+        }
+
+        function mostrarReglas() {
+            document.getElementById("reglasModal").style.display = "block";
+        }
+
+        function cerrarModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Cerrar el modal si se hace clic fuera de él
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
